@@ -1,0 +1,12 @@
+{
+    "terraform.experimentalFeatures.validateOnSave": true,
+    "terraform.codelens.referenceCount": true,
+    "makefile.buildBeforeLaunch": false,
+    "[*]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[terraform]": {
+      "editor.defaultFormatter": "hashicorp.terraform"
+    }
+  }
+  

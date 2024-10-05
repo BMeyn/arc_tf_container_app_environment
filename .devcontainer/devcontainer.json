@@ -1,0 +1,44 @@
+{
+  "name": "Terraform",
+  "build": { "dockerfile": "Dockerfile" },
+  "remoteUser": "root",
+  "containerUser": "root",
+  "features": {
+    "ghcr.io/dhoeric/features/terraform-docs:1": {},
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
+    "ghcr.io/devcontainers-contrib/features/pre-commit:2": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/azure-cli:1": {},
+    "ghcr.io/azure/azure-dev/azd:0": {},
+    "ghcr.io/devcontainers-contrib/features/tfswitch:1": {
+      "version": "latest"
+    },
+    // required for tflint
+    "ghcr.io/devcontainers/features/terraform:1": {},
+    "ghcr.io/devcontainers/features/go:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "hashicorp.terraform",
+        "hashicorp.hcl",
+        "editorconfig.editorconfig",
+        "ms-vscode.makefile-tools",
+        "ms-vscode.azure-account",
+        "esbenp.prettier-vscode",
+        "GitHub.copilot",
+        "golang.go"
+      ]
+    },
+    "settings": {
+      "terminal.integrated.shell.linux": "/usr/bin/zsh"
+    }
+  },
+  // remove tf installation of the tf feature, install the required tf version of this workspace and install pre-commit hooks
+  "postCreateCommand": "unlink \"/usr/local/bin/terraform\" && tfswitch && git config --global --add safe.directory /workspaces/* && make git-hooks",
+  "remoteEnv": {
+    "TF_LOG": "info",
+    "TF_LOG_PATH": "./terraform.log"
+  }
+}

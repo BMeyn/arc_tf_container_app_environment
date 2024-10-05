@@ -1,0 +1,33 @@
+# Ignore Terraform state files
+*.tfstate
+*.tfstate.backup
+*.tfplan
+.terraform.tfstate.lock.info
+
+# Ignore .terraform directory
+.terraform/
+
+# Ignore any local override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Ignore CLI configuration files
+.terraformrc
+.terraform.lock.hcl
+terraform.rc
+
+# Ignore generated files
+terraform.log
+
+backend.*.tfvars
+
+.DS_Store
+
+**/*.local.tfvars
+terraform.tfstate.*
+
+
+# ignore go pacakge files
+*.sum
